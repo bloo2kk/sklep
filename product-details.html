@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">GameZone</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Strona Główna</a></li>
+                <li><a href="products.html">Produkty</a></li>
+                <li><a href="cart.html">Koszyk</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Farming Simulator 2025</h1>
+        <img src="images/game1.jpg" alt="Game 1">
+        <p>Cena: <span id="price">149.99zł</span></p>
+        <p>Opis: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <button id="add-to-cart" data-title="Farming Simulator 2025" data-price="149.99zł">Dodaj do koszyka</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 GameZone. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Obsługa przycisku "Dodaj do koszyka"
+        document.getElementById("add-to-cart").addEventListener("click", function () {
+            const title = this.dataset.title;
+            const price = this.dataset.price;
+
+            // Funkcja dodawania do koszyka
+            addToCart(title, price);
+
+            // Informacja dla użytkownika
+            alert(`${title} został dodany do koszyka!`);
+        });
+    </script>
+</body>
+</html>
