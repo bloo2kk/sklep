@@ -1,49 +1,298 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Details</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Farming Simulator 25 - GameZone</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header, footer {
+      background-color: #1c1c1c;
+      color: white;
+      padding: 20px;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .product-detail {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      flex-wrap: wrap;
+    }
+
+    .product-gallery {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .product-gallery .main-image {
+      width: 20vw;
+      height: 60vh;
+    }
+
+    .thumbnail-gallery {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .thumbnail-gallery img {
+      width: 60px;
+      height: auto;
+      cursor: pointer;
+      border: 1px solid #ccc;
+    }
+
+    .product-info {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .product-info h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 22px;
+      color: #e60000;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: #777;
+      margin-left: 10px;
+    }
+
+    .product-info p {
+      margin: 8px 0;
+    }
+
+    .product-info button {
+      background-color: #e60000;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .product-description, .system-requirements {
+      padding: 20px;
+    }
+
+    .product-description h2, .system-requirements h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .system-requirements ul, .product-description ul {
+      padding-left: 20px;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 20px;
+    }
+
+    .footer-links, .footer-logo, .footer-newsletter {
+      flex: 1 1 200px;
+      margin: 10px 0;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .footer-newsletter input {
+      padding: 8px;
+      width: 70%;
+      margin-right: 5px;
+    }
+
+    .footer-newsletter button {
+      padding: 8px;
+    }
+
+    .footer-socials {
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    .footer-socials a {
+      color: white;
+      margin: 0 10px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 10px;
+      border-top: 1px solid #444;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <a href="index.html" class="logo">GameZone</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Strona Główna</a></li>
-                <li><a href="products.html">Produkty</a></li>
-                <li><a href="cart.html">Koszyk</a></li>
-                
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <h1>Farming Simulator 2025</h1>
-        <img src="images/game1.jpg" alt="Game 1">
-        <p>Cena: <span id="price">149.99zł</span></p>
-        <p>Opis: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <button id="add-to-cart" data-title="Farming Simulator 2025" data-price="149.99zł">Dodaj do koszyka</button>
-    </main>
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo">GameZone</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Strona Główna</a></li>
+        <li><a href="products.html">Produkty</a></li>
+        <li><a href="cart.html">Koszyk</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <footer>
-        <p>&copy; 2024 GameZone. All rights reserved.</p>
-    </footer>
+  <main class="product-detail">
+    <div class="product-gallery">
+      <img src="images/game1.jpg" alt="Farming Simulator 25" class="main-image" />
+      <div class="thumbnail-gallery">
+        <img src="images/farming-simulator-25-1.jpg" alt="Zrzut ekranu 1" />
+        <img src="images/farming-simulator-25-2.jpg" alt="Zrzut ekranu 2" />
+        <img src="images/farming-simulator-25-3.jpg" alt="Zrzut ekranu 3" />
+      </div>
+    </div>
 
-    <script src="script.js"></script>
-    <script>
-        // Obsługa przycisku "Dodaj do koszyka"
-        document.getElementById("add-to-cart").addEventListener("click", function () {
-            const title = this.dataset.title;
-            const price = this.dataset.price;
+    <div class="product-info">
+      <h1>Farming Simulator 25 (PC) Klucz Steam</h1>
+      <p class="price">142,99 zł <span class="old-price">169,99 zł</span></p>
+      <p class="availability">Dostępność: <strong>Pobierz już dzisiaj</strong></p>
+      <p class="delivery">Dostawa: <strong>Elektroniczna</strong></p>
+      <p class="language">Wersja językowa: <strong>Polska/Angielska</strong></p>
+      <button id="add-to-cart" data-title="Farming Simulator 25" data-price="142.99">Dodaj do koszyka</button>
+    </div>
+  </main>
 
-            // Funkcja dodawania do koszyka
-            addToCart(title, price);
+  <section class="product-description">
+    <h2>Opis</h2>
+    <p><strong>Farming Simulator 25</strong> oferuje nowe maszyny, rośliny i możliwości rolnicze w realistycznych środowiskach. Rozwijaj swoje gospodarstwo, zarządzaj hodowlą zwierząt i eksploruj różnorodne krajobrazy, zdobywając maszyny od renomowanych producentów rolniczych.</p>
+    <p>Nowe funkcje obejmują:</p>
+    <ul>
+      <li>Uprawę dwóch rodzajów ryżu, szpinaku i innych nowych plonów.</li>
+      <li>Hodowlę bawołów oraz innych zwierząt gospodarskich.</li>
+      <li>Ponad 400 autentycznych maszyn i urządzeń od ponad 150 międzynarodowych marek.</li>
+      <li>Ulepszoną grafikę i fizykę dzięki silnikowi GIANTS Engine 10.</li>
+    </ul>
+  </section>
 
-            // Informacja dla użytkownika
-            alert(`${title} został dodany do koszyka!`);
-        });
-    </script>
+  <section class="system-requirements">
+    <h2>Wymagania sprzętowe</h2>
+    <h3>Minimalne:</h3>
+    <ul>
+      <li>System: Windows 10 64-bit</li>
+      <li>Procesor: Intel Core i5-6400 / AMD Ryzen 5 1400</li>
+      <li>Pamięć RAM: 8 GB</li>
+      <li>Karta graficzna: GTX 1050Ti / Radeon RX 470</li>
+      <li>DirectX: 12</li>
+      <li>Dysk: 45 GB</li>
+    </ul>
+    <h3>Zalecane:</h3>
+    <ul>
+      <li>System: Windows 10 64-bit</li>
+      <li>Procesor: Intel Core i7-10700 / Ryzen 7 3800X</li>
+      <li>Pamięć RAM: 12 GB</li>
+      <li>Karta graficzna: RTX 2070 / Radeon RX 5700 XT</li>
+      <li>DirectX: 12</li>
+      <li>Dysk: 45 GB</li>
+    </ul>
+  </section>
+  <section class="product-trailer" style="padding: 20px;">
+    <h2>Trailer</h2>
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000; margin-top: 10px;">
+      <iframe
+        src="https://www.youtube.com/watch?v=lW2JOU-EYQA"
+        title="Farming Simulator 25 Trailer"
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <h2>GameZone</h2>
+        <p>Twoje centrum gier od 2025!</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Informacje</h4>
+        <ul>
+          <li><a href="#">O nas</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Kariera</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Pomoc</h4>
+        <ul>
+          <li><a href="#">Kontakt</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Zwroty</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-newsletter">
+        <h4>Zapisz się na newsletter</h4>
+        <form>
+          <input type="email" placeholder="Twój e-mail" />
+          <button type="submit">Zapisz</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-socials">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 GameZone. Wszelkie prawa zastrzeżone.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("add-to-cart").addEventListener("click", function () {
+      const title = this.dataset.title;
+      const price = this.dataset.price;
+      alert(`${title} został dodany do koszyka za ${price} zł!`);
+    });
+  </script>
 </body>
 </html>
